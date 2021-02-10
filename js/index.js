@@ -91,9 +91,16 @@ function zoom(event) {
   el.onwheel = zoom;
 
 
+// stopPropagation
+Array.from(document.all).forEach(elem => elem.addEventListener('click', event => {
+  console.log('🎯 target', event.target);
+  console.log('🧭 current target', event.currentTarget);
+  event.stopPropagation()
+}))
+
 // preventDefault
 Array.from(document.links).forEach(link => {
-    link.addEventListener('click', function (event) {
-        event.preventDefault()
-    })
+  link.addEventListener('click', function (event) {
+    event.preventDefault()
+  })
 })
